@@ -2,7 +2,7 @@
 
 int main()
 {
-    /* Variaveis Carta 01*/
+    /* Variaveis Carta-01*/
     char sEstado01[1] ;
     char sCodCarta01[3] ;
     char sNomeCidade01[200] ;
