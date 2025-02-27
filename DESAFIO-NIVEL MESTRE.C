@@ -2,10 +2,10 @@
 
 int main()
 {
-    /* Variaveis Carta-01*/
+    // VARIAVEIS CARTA 01
     char sEstado01[1] ;
     char sCodCarta01[3] ;
-    char sNomeCidade01[200] ;
+    char sNomeCidade01[100] ;
 
     int  iPopulacao01;
     int  iPTuristicos01; 
@@ -16,7 +16,7 @@ int main()
     float fVlrDensPop1;
     float fVlrPibCap1;
 
-    /* Variaveis Carta 02*/
+    // VARIAVEIS CARTA 02
     char sEstado02[1];
     char sCodCarta02[3];
     char sNomeCidade02[100];
@@ -29,11 +29,17 @@ int main()
     float fPib02;
     float fVlrDensPop2;
     float fVlrPibCap2;    
-   
-    /* LER CARTA 01*/    
+
+    //VARIAVEIS RESULTADOS NIVEM MESTRE
+    int ResultPupul, ResultArea, ResultPib,
+        ResultTurist,ResultDensid, ResultPibCap, ResultSuper;          
+
+    float SomaSuperPoder1,SomaSuperPoder2;
+  
+    //INICIO  
     printf(" ****** SUPER TRUNFO. NIVEL NOVATO **** \n\n");
     printf("FAVOR INFORMAR OS DADOS DA 1°CARTA \n\n");
-  
+ 
     printf("Digite a Letra do Estado: ");
     scanf("%s", &sEstado01);
      
@@ -55,11 +61,11 @@ int main()
     printf("Digite Quaitadade de pontos Turisticos: ");
     scanf("%d", &iPTuristicos01);  
 
-    /* CALCULO DENSIDADE E BIP CRT01 */
+    // CALCULO DENSIDADE E BIP CRT01 
     fVlrDensPop1 = (float) ( iPopulacao01 / fArea01 );
     fVlrPibCap1  = (float) ( fPib01 / iPopulacao01  );
 
-    /*IMPRIME CARTA 01*/ 
+    //IMPRIME CARTA 01 
     printf("\n            DADOS DA 1° CARTA \n\n");
     
     iCarta1 = 1;
@@ -74,7 +80,7 @@ int main()
     printf("Densidade Populacional: %.2f hab/km²\n", fVlrDensPop1);
     printf("PIB per Capita: %.2f\n", fVlrPibCap1);
 
-    /* LER CARTA 02 */  
+    // LER CARTA 02 
     printf("\n\n   INFORME DOS DADOS DA 2° CARTA \n\n");   
   
     printf("Digite a Letra do Estado: ");
@@ -98,11 +104,11 @@ int main()
     printf("Digite Quaitadade de pontos Turisticos:");
     scanf("%d", &iPTuristicos02);
 
-    /* CALCULO DENSIDADE E BIP CRT01 */
+    // CALCULO DENSIDADE E BIP CRT01
     fVlrDensPop2 = (float) ( iPopulacao02 / fArea02);
-    fVlrPibCap2  = (float) ( fPib02 / iPopulacao02  );
+    fVlrPibCap2  = (float) ( fPib02 / iPopulacao02 );
 
-    /*IMPRIME CARTA 02 */
+    //IMPRIME CARTA 02 
     printf("\n            DADOS DA 2° CARTA \n\n");
   
     iCarta2 = 2;
@@ -117,5 +123,31 @@ int main()
     printf("Densidade Populacional: %.2f hab/km²\n", fVlrDensPop2);
     printf("PIB per Capita: %.2f\n", fVlrPibCap2);
  
+    //COMPARAÇÕES - NIVEL MESTRE    
+    ResultPupul  = iPopulacao01   > iPopulacao02;
+    ResultArea   = fArea01        > fArea02;
+    ResultPib    = fPib01         > fPib02;
+    ResultTurist = iPTuristicos01 > iPTuristicos02;
+    ResultDensid = fVlrDensPop1   > fVlrDensPop2;
+    ResultPibCap = fVlrPibCap1    > fVlrPibCap2;
+
+    SomaSuperPoder1 = iPopulacao01   + fArea01     + fPib01 + 
+                      iPTuristicos01 + fVlrDensPop1 - fVlrPibCap1;
+    
+    SomaSuperPoder2 = iPopulacao02   + fArea02      + fPib02 + 
+                      iPTuristicos02 + fVlrDensPop2 - fVlrPibCap2;
+
+    ResultSuper = float(SomaSuperPoder1 > SomaSuperPoder2);
+
+    printf("\n COMPARAÇÃO ENTRE CARTAS %d e %d \n\n", iCarta1, iCarta2);    
+
+    printf("População: %d \n", ResultPupul);
+    printf("Aréa: %d\n",ResultArea );
+    printf("Pib: %d\n",ResultPib );
+    printf("Pontos Turisticos: %d\n",ResultTurist );
+    printf("Densidade Populacional: %d\n",ResultDensid );
+    printf("Pib per Capita: %d\n",ResultPibCap );
+    printf("Super Poder Carta 1: %d\n",  ResultSuper );
+    
     return 0;   
 }
